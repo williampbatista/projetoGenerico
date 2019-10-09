@@ -1,0 +1,34 @@
+logging:
+  level.: INFO
+server:
+  port: 8099   
+
+management:
+  security:
+    enabled: false
+    
+spring:
+  main:
+    banner-mode: log
+  datasource:    
+    url: jdbc:mysql://localhost:3306/generic_db?useTimezone=true&serverTimezone=America/Sao_Paulo
+    username: root
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
+    max-active: 5
+    test-on-borrow: true
+    validation-query: SELECT 1
+    test-while-idle: true
+  jpa:
+    database: mysql
+    show-sql: true
+    properties:
+      hibernate:   
+        hbm2ddl:          
+          auto: create-drop          
+        temp:
+          use_jdbc_metadata_defaults: true
+  batch:
+    job:
+      enabled: false
+    initialize-schema: always

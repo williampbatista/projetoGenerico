@@ -1,0 +1,17 @@
+<beanio xmlns="http://www.beanio.org/2012/03" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.beanio.org/2012/03 http://www.beanio.org/2012/03/mapping.xsd">
+
+	<stream name="file_customer_stream" format="delimited" ignoreUnidentifiedRecords="true">
+		<parser>
+			<property name="delimiter" value=";" />
+		</parser>
+
+		<record name="Customer" class="entity.customer" >
+			<field name="ignore" ignore="true"/>
+			<field name="id" />
+			<field name="name" />
+		</record>
+
+	</stream>
+
+</beanio>

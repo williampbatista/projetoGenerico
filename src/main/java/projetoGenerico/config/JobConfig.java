@@ -92,7 +92,7 @@ public class JobConfig {
 	@Bean("exportarCustomerStep")
 	protected Step exportarCustomer(StepBuilderFactory stepBuilderFactory) {
 		return stepBuilderFactory.get("exportarCustomerStep")
-				.<Customer, Customer> chunk(10)
+				.<Iterable<Customer>, Iterable<Customer>> chunk(10)
 				.reader(customerReader)
 				.processor(customerProcess)
 				.writer(customerWriter)

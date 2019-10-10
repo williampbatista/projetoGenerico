@@ -34,14 +34,4 @@ public class ProjetoGenericoMain extends SpringBootServletInitializer {
 				.getBean(CamelSpringBootApplicationController.class);
 		applicationController.run();
 	}
-
-//	public static void main(String[] args) throws Exception {
-//		System.setProperty("spring.config.name", "projetoGenerico-config");
-//		SpringApplication app = new SpringApplication(ProjetoGenericoMain.class);
-//		app.setRegisterShutdownHook(false);
-//
-//		ApplicationContext applicationContext = app.run(args);
-//		CamelSpringBootApplicationController applicationController = applicationContext.getBean(CamelSpringBootApplicationController.class);
-//		applicationController.run();
-//	}
 }

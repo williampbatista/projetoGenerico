@@ -6,12 +6,15 @@ import org.springframework.stereotype.Component;
 import projetoGenerico.entity.Customer;
 
 @Component("CustomerProcess")
-public class CustomerProcess implements ItemProcessor<Customer, Customer> {
+public class CustomerProcess implements ItemProcessor<Iterable<Customer>, Iterable<Customer>> {
 
 	@Override
-	public Customer process(Customer item) throws Exception {
-		item.setName(item.getName() + " PASSOU NO PROCESS");
-		return item;
+	public Iterable<Customer> process(Iterable<Customer> items) throws Exception {
+		items.forEach(c -> {
+			c.setActive(Boolean.FALSE);
+		});
+
+		return items;
 	}
 
 }

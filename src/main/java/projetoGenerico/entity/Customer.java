@@ -22,8 +22,8 @@ public class Customer implements Serializable {
 	 */
 	private static final long serialVersionUID = -3370720362753379174L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TB_CUSTOMER_GEN")
-	@SequenceGenerator(name = "TB_CUSTOMER_GEN", sequenceName = "TB_CUSTOMER_GEN", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_TB_CUSTOMER")
+	@SequenceGenerator(name = "SEQ_TB_CUSTOMER", sequenceName = "SEQ_TB_CUSTOMER", allocationSize = 1)
 	private long id;
 	@Column(name = "NAME", nullable = false, length = 255)
 	private String name;

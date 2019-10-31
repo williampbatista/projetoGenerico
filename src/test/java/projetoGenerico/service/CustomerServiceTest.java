@@ -14,7 +14,6 @@ import projetoGenerico.entity.Customer;
 import projetoGenerico.repository.CustomerRepository;
 
 public class CustomerServiceTest {
-	Optional<Customer> optionalCustomer;
 	@Mock
 	CustomerRepository repository;
 
@@ -23,7 +22,7 @@ public class CustomerServiceTest {
 
 	@Test
 	public void testFindByIdPessoaJ() {
-		optionalCustomer = Optional.of(new Customer(1l, "PRIMO"));
+		Optional<Customer> optionalCustomer = Optional.of(new Customer(1l, "PRIMO"));
 		when(repository.findById(any(Long.class))).thenReturn(optionalCustomer);
 		String tipo = customerService.findById(1l);
 		assertEquals("J", tipo);
@@ -31,7 +30,7 @@ public class CustomerServiceTest {
 
 	@Test
 	public void testFindByIdPessoaF() {
-		optionalCustomer = Optional.of(new Customer(1l, null));
+		Optional<Customer> optionalCustomer = Optional.of(new Customer(1l, null));
 		when(repository.findById(any(Long.class))).thenReturn(optionalCustomer);
 		String tipo = customerService.findById(1l);
 		assertEquals("F", tipo);
@@ -39,7 +38,7 @@ public class CustomerServiceTest {
 
 	@Test
 	public void testFindByIdPessoaNull() {
-		optionalCustomer = Optional.ofNullable(null);
+		Optional<Customer> optionalCustomer = Optional.ofNullable(null);
 		when(repository.findById(any(Long.class))).thenReturn(optionalCustomer);
 		String tipo = customerService.findById(1l);
 		assertEquals(null, tipo);

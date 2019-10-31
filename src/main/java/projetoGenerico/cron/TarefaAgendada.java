@@ -25,7 +25,7 @@ public class TarefaAgendada {
 	@Autowired
 	Job exportCustomerJob;
 
-	@Scheduled(cron = "10 0/1 * 1/1 * *")
+//	@Scheduled(cron = "10 0/1 * 1/1 * *")
 	public void iniciarJob() {
 		LOG.info("[ job Gerar Base Regutória ENABLED");
 		try {

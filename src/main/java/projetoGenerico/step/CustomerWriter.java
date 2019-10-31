@@ -23,7 +23,7 @@ public class CustomerWriter implements ItemWriter<Iterable<Customer>> {
 			customerRepository.saveAll(listCustomer);
 		});
 
-		LOG.info("CustomerWriter >> ai bebeeeeeeeeeee, os caras nao param bebeeee");
+		LOG.info("CustomerWriter >> WRITER");
 	}
 
 }

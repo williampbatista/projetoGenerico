@@ -24,7 +24,7 @@ public class CustomerReader implements ItemReader<Iterable<Customer>> {
 	@Override
 	public Iterable<Customer> read()
 			throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
-		LOG.info("CustomerReader");
+		LOG.info("CustomerReader >> WRITER");
 		return customerRepository.findByActive(Boolean.TRUE);
 	}
 	

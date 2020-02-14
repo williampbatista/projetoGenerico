@@ -25,9 +25,9 @@ public class TarefaAgendada {
 	@Autowired
 	Job exportCustomerJob;
 
-//	@Scheduled(cron = "10 0/1 * 1/1 * *")
+	@Scheduled(cron = "10 0/1 * 1/1 * *")
 	public void iniciarJob() {
-		LOG.info("[ job Gerar Base Regutória ENABLED");
+		LOG.info("[ job ENABLED");
 		try {
 			DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 			LocalDateTime inicio = LocalDateTime.now();

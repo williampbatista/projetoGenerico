@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -27,10 +26,10 @@ public class CustomerService {
 	@Autowired
 	CustomerRepository customerRepository;
 
-	public void save(CustomerResource resource) {
-		customerRepository.save(CustomerConverter.toEntity(resource));
+	public Customer save(CustomerResource resource) {
+		return customerRepository.save(CustomerConverter.toEntity(resource));
 	}
-	
+
 	public List<CustomerResource> findAll() {
 		List<CustomerResource> listCustomer = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
@@ -39,11 +38,8 @@ public class CustomerService {
 		}
 
 		return listCustomer;
-
-//		return CustomerConverter.toListResource(customerRepository.findAll());
 	}
-	
-	
+
 	@JmsListener(destination = "queue.presida")
 	public String findAllPresida() {
 		LOG.info("TESTE");
@@ -52,29 +48,19 @@ public class CustomerService {
 			listCustomer.add(new CustomerResource(i, "NOME", "EMAIL", "MOTHERNAME", new Date(), "CPF", "RG", "PASSWORD",
 					"PHONE", Boolean.TRUE));
 		}
-		
+
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(listCustomer);
 
 		return json;
-
-//		return CustomerConverter.toListResource(customerRepository.findAll());
 	}
 
 	public void delete(CustomerResource resource) {
 		customerRepository.delete(CustomerConverter.toEntity(resource));
 	}
 
-	public String findById(Long id) {
-		Optional<Customer> c = customerRepository.findById(id);
-		if (c.isPresent()) {
-			if (StringUtils.isEmpty(c.get().getName())) {
-				return "F";
-			} else {
-				return "J";
-			}
-		}
-		return null;
+	public Optional<Customer> findById(Long id) {
+		return customerRepository.findById(id);
 	}
 
 	@JmsListener(destination = "queue.sample")
@@ -86,5 +72,5 @@ public class CustomerService {
 	public void onReceiverTopic(String str) {
 		System.out.println(str);
 	}
-	
+
 }
